@@ -16,14 +16,6 @@
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "engines": {
-    "node": ">=16",
-    "npm": ">=8"
-  },
-  "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
-  },
   "scripts": {
     "build": "tsup src/index.ts --dts --format cjs,esm",
     "lint": "tsc -b && eslint .",

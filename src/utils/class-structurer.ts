@@ -1,107 +1,107 @@
-const isArray = (item: unknown) => Array.isArray(item);
+const isArray = (item: unknown) => Array.isArray(item)
 
 const isObject = (item: unknown) =>
-  item !== null && isArray(item) === false && typeof item === 'object';
+  item !== null && isArray(item) === false && typeof item === 'object'
 
-const isFunction = (item: unknown) => typeof item === 'function';
+const isFunction = (item: unknown) => typeof item === 'function'
 
-const isBoolean = (item: unknown) => typeof item === 'boolean';
+const isBoolean = (item: unknown) => typeof item === 'boolean'
 
 const hasOwnPrototypeOfToString = (object: object) =>
-  object.toString !== Object.prototype.toString;
+  object.toString !== Object.prototype.toString
 
 export const classNames = (...classes: Array<unknown>) => {
-  let resultClassName = '';
+  let resultClassName = ''
 
   const handlePrimitive = (item: unknown, asKey?: string) => {
-    const isItemBoolean = isBoolean(item);
+    const isItemBoolean = isBoolean(item)
 
     if (!item || isItemBoolean === true) {
-      return;
+      return
     }
 
-    resultClassName += `${asKey !== undefined ? asKey : item} `;
-  };
+    resultClassName += `${asKey !== undefined ? asKey : item} `
+  }
 
   const handleObject = (object: object) => {
-    const entries = Object.entries(object);
+    const entries = Object.entries(object)
 
     /* maybe throw it out */
-    const hasObjectOwnPrototypeOfToString = hasOwnPrototypeOfToString(object);
+    const hasObjectOwnPrototypeOfToString = hasOwnPrototypeOfToString(object)
     /**/
 
     entries.forEach(([key, value]) => {
       if (!value) {
-        return;
+        return
       }
 
-      const isValueFunction = isFunction(value);
-      const isToString = key === 'toString';
+      const isValueFunction = isFunction(value)
+      const isToString = key === 'toString'
 
       if (isValueFunction === true && isToString === false) {
-        const functionResult = (value as Function)();
+        const functionResult = (value as () => unknown)()
 
-        handlePrimitive(functionResult, key);
+        handlePrimitive(functionResult, key)
 
-        return;
+        return
       }
 
       if (isToString === false) {
-        resultClassName += `${key} `;
+        resultClassName += `${key} `
       }
-    });
+    })
 
     /* maybe throw it out */
     if (hasObjectOwnPrototypeOfToString === true) {
-      const toStringValue = object.toString();
+      const toStringValue = object.toString()
 
-      handlePrimitive(toStringValue);
+      handlePrimitive(toStringValue)
     }
     /**/
-  };
+  }
 
   const handleArray = (array: Array<unknown>) => {
     array.forEach((item) => {
       if (!item || typeof item === 'boolean') {
-        return;
+        return
       }
 
-      const isItemArray = isArray(item);
-      const isItemObject = isObject(item);
+      const isItemArray = isArray(item)
+      const isItemObject = isObject(item)
 
       if (isItemArray === true) {
-        return handleArray(item as Array<unknown>);
+        return handleArray(item as Array<unknown>)
       }
 
       if (isItemObject === true) {
-        return handleObject(item as object);
+        return handleObject(item as object)
       }
 
-      resultClassName += `${item} `;
-    });
-  };
+      resultClassName += `${item} `
+    })
+  }
 
   for (let i = 0; i < classes.length; i += 1) {
-    const classNameItem = classes[i];
+    const classNameItem = classes[i]
 
-    const isItemObject = isObject(classNameItem);
+    const isItemObject = isObject(classNameItem)
 
-    const isItemArray = isArray(classNameItem);
+    const isItemArray = isArray(classNameItem)
 
     if (isItemObject === true) {
-      handleObject(classNameItem as object);
+      handleObject(classNameItem as object)
 
-      continue;
+      continue
     }
 
     if (isItemArray === true) {
-      handleArray(classNameItem as Array<unknown>);
+      handleArray(classNameItem as Array<unknown>)
 
-      continue;
+      continue
     }
 
-    handlePrimitive(classNameItem);
+    handlePrimitive(classNameItem)
   }
 
-  return resultClassName.trim();
-};
+  return resultClassName.trim()
+}

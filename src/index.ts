@@ -1,4 +1,3 @@
-import { RouletteTable } from './components/RouletteTable';
-import { RouletteWheel } from './components/RouletteWheel';
+import { RouletteTable } from './RouletteTable'
 
-export { RouletteTable, RouletteWheel };
+export { RouletteTable }

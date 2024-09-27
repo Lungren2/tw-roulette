@@ -31,11 +31,7 @@ export interface IRouletteTableProps {
   isDebug?: boolean
 }
 
-export const RouletteTable: FC<IRouletteTableProps> = ({
-  onBet,
-  bets,
-  isDebug,
-}) => {
+const RouletteTable: FC<IRouletteTableProps> = ({ onBet, bets, isDebug }) => {
   const tableRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -183,3 +179,5 @@ export const RouletteTable: FC<IRouletteTableProps> = ({
     </RouletteTableContext.Provider>
   )
 }
+
+export default RouletteTable

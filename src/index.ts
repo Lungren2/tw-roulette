@@ -1,3 +1,3 @@
-import { RouletteTable } from './RouletteTable'
+import RouletteTable from './RouletteTable'
 
 export { RouletteTable }

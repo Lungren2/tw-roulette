@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import RouletteTable from '../components/roulette-table';
+import {RouletteTable} from '../components/roulette-table';
 
 const meta = {
   title: 'Example/Demo',

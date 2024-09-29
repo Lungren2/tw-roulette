@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import '../styles/Chip.css'
+import '../../styles/chip.css'
 
 export interface IChipProps {
   position:

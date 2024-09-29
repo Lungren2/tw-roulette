@@ -1,19 +1,19 @@
 import type { FC, MouseEvent } from 'react'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 
-import { BottomBets } from './components/bottom-bets'
-import { NumberBets } from './components/number-bets'
-import { Columns } from './components/table-columns'
-import { Dozens } from './components/table-dozens'
-import { ZeroBets } from './components/zero-bets'
+import { BottomBets } from './BottomBets/bottom-bets'
+import { NumberBets } from './NumberBets/number-bets'
+import { Columns } from './TableColumn/table-columns'
+import { Dozens } from './TableDozens/table-dozens'
+import { ZeroBets } from './ZeroBets/zero-bets'
 
-import { ACTION_TYPES } from './constants/action-types'
-import config from './constants/table.json'
-import { classNames } from './utils/class-structurer'
-import { hasOwn } from './utils/hasOwn'
+import { ACTION_TYPES } from '../constants/action-types'
+import config from '../constants/table.json'
+import { classNames } from '../utils/class-structurer'
+import { hasOwn } from '../utils/has-own'
 
-import { RouletteTableContext } from './context/RouletteTableContext'
-import './styles/RouletteTable.css'
+import { RouletteTableContext } from '../context/RouletteTableContext'
+import '../styles/roulette-table.css'
 
 export interface IOnBetParams {
   bet: keyof typeof ACTION_TYPES
@@ -31,7 +31,7 @@ export interface IRouletteTableProps {
   isDebug?: boolean
 }
 
-const RouletteTable: FC<IRouletteTableProps> = ({ onBet, bets, isDebug }) => {
+export const RouletteTable: FC<IRouletteTableProps> = ({ onBet, bets, isDebug }) => {
   const tableRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -179,5 +179,3 @@ const RouletteTable: FC<IRouletteTableProps> = ({ onBet, bets, isDebug }) => {
     </RouletteTableContext.Provider>
   )
 }
-
-export default RouletteTable

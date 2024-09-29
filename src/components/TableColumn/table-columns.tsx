@@ -1,10 +1,10 @@
 import { useContext, type FC } from 'react'
 
-import { ACTION_TYPES } from '../constants/action-types'
-import { RouletteTableContext } from '../context/RouletteTableContext'
-import { findChipIcon } from '../helpers/findChipIcon'
-import { shouldRenderChip } from '../helpers/shouldRender'
-import { Chip } from './poker-chip'
+import { ACTION_TYPES } from '../../constants/action-types'
+import { RouletteTableContext } from '../../context/RouletteTableContext'
+import { findChipIcon } from '../../helpers/findChipIcon'
+import { shouldRenderChip } from '../../helpers/shouldRender'
+import { Chip } from '../PokerChip/poker-chip'
 
 export const Columns: FC = () => {
   const { onBetCatcherHover, bets } = useContext(RouletteTableContext)

@@ -1,7 +1,7 @@
 import type { MouseEvent } from 'react'
 import { createContext } from 'react'
 
-import type { IRouletteTableProps } from '../RouletteTable'
+import type { IRouletteTableProps } from '../components/roulette-table'
 
 export interface IRouletteTableContextProps {
   bets: IRouletteTableProps['bets']

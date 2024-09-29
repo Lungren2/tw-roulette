@@ -1,9 +1,9 @@
 import { useContext, type FC } from 'react'
 
-import { ACTION_TYPES } from '../constants/action-types'
-import config from '../constants/table.json'
-import { RouletteTableContext } from '../context/RouletteTableContext'
-import { findChipIcon } from '../helpers/findChipIcon'
+import { ACTION_TYPES } from '../../constants/action-types'
+import config from '../../constants/table.json'
+import { RouletteTableContext } from '../../context/RouletteTableContext'
+import { findChipIcon } from '../../helpers/findChipIcon'
 import {
   shouldRenderBottomCatcher,
   shouldRenderChip,
@@ -13,8 +13,8 @@ import {
   shouldRenderTopCatcher,
   shouldRenderTopRightDoubleStreetCatcher,
   shouldRenderTopStreetCatcher,
-} from '../helpers/shouldRender'
-import { Chip } from './poker-chip'
+} from '../../helpers/shouldRender'
+import { Chip } from '../PokerChip/poker-chip'
 
 export const NumberBets: FC = () => {
   const { onBetCatcherHover, bets } = useContext(RouletteTableContext)

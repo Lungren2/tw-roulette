@@ -1,23 +1,26 @@
-// vite.config.js
-import { resolve } from 'path'
-import { defineConfig } from 'vite'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import dts from "vite-plugin-dts";
+import path from "path";
 
 export default defineConfig({
   build: {
     lib: {
-      // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, 'src/index.ts'),
-      name: 'tw-roulette',
-      // the proper extensions will be added
-      fileName: 'tw-roulette',
+      entry: path.resolve(__dirname, "src/index.ts"),
+      name: "tw-roulette",
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['react'],
+      external: ["react", "react-dom"],
       output: {
         globals: {
-          react: 'React',
+          react: "React",
+          "react-dom": "ReactDOM",
         },
       },
     },
+    sourcemap: true,
+    emptyOutDir: true,
   },
-})
+  plugins: [react(), dts()],
+});
